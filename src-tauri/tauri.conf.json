@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "your-voice",
+  "version": "0.1.0",
+  "identifier": "com.i764654.your-voice",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "security": {
+      "csp": null,
+      "dangerousDisableAssetCspModification": true,
+      "assetProtocol": {
+        "enable": true,
+        "scope": ["$HOME/.your-voice/media/**"]
+      }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "resources": {
+      "resources/bin/*": "bin/",
+      "resources/models/*": "models/"
+    },
+    "macOS": {
+      "entitlements": "./entitlements.plist"
+    }
+  },
+  "plugins": {
+  "sql": { 
+    "preloadConnections": ["sqlite:metadata.db"]
+  } 
+  } 
+}
